@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 510775324}
   - component: {fileID: 510775325}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Diagonal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -54,7 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1573977246}
   - component: {fileID: 1573977247}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Diagonal75
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -98,7 +98,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5373113005906455392}
   - component: {fileID: 5373113005906455393}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HorizontalSide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
