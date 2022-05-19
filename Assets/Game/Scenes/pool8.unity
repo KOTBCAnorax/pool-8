@@ -124,6 +124,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!54 &363491904 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 6488598776636944394, guid: 70aa5c0a706550b40ac97e796cb993e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6488598778287970883}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &550362901
 GameObject:
   m_ObjectHideFlags: 0
@@ -217,6 +223,18 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &902887810 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1354173224, guid: 70aa5c0a706550b40ac97e796cb993e7,
+    type: 3}
+  m_PrefabInstance: {fileID: 6488598778287970883}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46921397e26ba01438664315f2bc463b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -608,6 +626,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1009738103}
     m_Modifications:
+    - target: {fileID: 657186860, guid: 70aa5c0a706550b40ac97e796cb993e7, type: 3}
+      propertyPath: _rb
+      value: 
+      objectReference: {fileID: 363491904}
+    - target: {fileID: 657186860, guid: 70aa5c0a706550b40ac97e796cb993e7, type: 3}
+      propertyPath: _cueStick
+      value: 
+      objectReference: {fileID: 902887810}
+    - target: {fileID: 657186860, guid: 70aa5c0a706550b40ac97e796cb993e7, type: 3}
+      propertyPath: _strikeForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 657186860, guid: 70aa5c0a706550b40ac97e796cb993e7, type: 3}
+      propertyPath: _nextStrikeDelay
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 6488598776636944391, guid: 70aa5c0a706550b40ac97e796cb993e7,
         type: 3}
       propertyPath: m_Name

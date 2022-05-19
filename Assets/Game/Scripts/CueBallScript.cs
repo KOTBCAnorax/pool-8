@@ -5,59 +5,74 @@ using UnityEngine;
 public class CueBallScript : MonoBehaviour
 {
     [SerializeField]
-    private Rigidbody rb;
+    private Rigidbody _rb;
     [SerializeField]
-    private CueStickScript CueStick;
+    private CueStickScript _cueStick;
     [SerializeField]
-    private float strikeForce = 10f;
+    private float _strikeForce = 10f;
+    [SerializeField]
+    private float _nextStrikeDelay = 7f;
 
-    private float afterStrikeDelay = 0.5f;
-    private float timeOfLastStrike;
+    private float _timeOfLastStrike;
 
-    private bool hasBeenStruck = false;
+    private bool _wasStruck = false;
 
     private void Update()
     {
         HandleInput();
 
-        if (hasStoped())
+        if (CanStrikeAgain())
         {
+            _wasStruck = false;
+
+            Freeze();
             ShowCueStick();
-            hasBeenStruck = false;
         }
     }
 
     private void HandleInput()
     {
-        if (Input.GetMouseButtonDown(0) && !hasBeenStruck)
+        if (Input.GetMouseButtonDown(0) && !_wasStruck)
         {
+            _wasStruck = true;
+
+            Unfreeze();
             Strike();
             HideCueStick();
-            hasBeenStruck = true;
         }
+    }
+
+    private bool CanStrikeAgain()
+    {
+        return _wasStruck && Time.time - _timeOfLastStrike > _nextStrikeDelay;
     }
 
     private void Strike()
     {
         Vector3 directionToStrike = Mouse.WorldPosition() - transform.position;
         directionToStrike = directionToStrike.normalized;
-        rb.AddForce(directionToStrike * strikeForce, ForceMode.Impulse);
-        timeOfLastStrike = Time.time;
-    }
+        _timeOfLastStrike = Time.time;
 
-    private bool hasStoped()
-    {
-        bool enoughTimeElapsed = (Time.time - timeOfLastStrike) > afterStrikeDelay;
-        return enoughTimeElapsed && hasBeenStruck && rb.velocity.magnitude < 0.05;
+        _rb.AddForce(directionToStrike * _strikeForce, ForceMode.Impulse);
     }
 
     private void HideCueStick()
     {
-        CueStick.gameObject.SetActive(false);
+        _cueStick.gameObject.SetActive(false);
     }
 
     private void ShowCueStick()
     {
-        CueStick.gameObject.SetActive(true);
+        _cueStick.gameObject.SetActive(true);
+    }
+
+    private void Freeze()
+    {
+        _rb.constraints = RigidbodyConstraints.FreezePosition;
+    }
+
+    private void Unfreeze()
+    {
+        _rb.constraints = RigidbodyConstraints.None;
     }
 }
