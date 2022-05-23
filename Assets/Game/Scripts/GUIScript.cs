@@ -17,7 +17,7 @@ public class GUIScript : MonoBehaviour
 
     public void UpdateScore()
     {
-        _score += 1;
+        _score++;
         _scoreText.text = "Score: " + _score.ToString();
     }
 }
