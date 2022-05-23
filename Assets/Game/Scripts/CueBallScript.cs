@@ -14,8 +14,15 @@ public class CueBallScript : MonoBehaviour
     private float _nextStrikeDelay = 7f;
 
     private float _timeOfLastStrike;
+    private Vector3 _respawnPoint;
 
     private bool _wasStruck = false;
+    private bool _gameStarted = false;
+
+    private void Start()
+    {
+        _respawnPoint = transform.position;
+    }
 
     private void Update()
     {
@@ -40,6 +47,17 @@ public class CueBallScript : MonoBehaviour
             Strike();
             HideCueStick();
         }
+
+        if (Input.GetKey(KeyCode.DownArrow) && !_gameStarted &&
+            transform.position.z > -2.5f)
+        {
+            transform.Translate(Vector3.back * 0.01f);
+        }
+        else if (Input.GetKey(KeyCode.UpArrow) && !_gameStarted &&
+            transform.position.z < 1.6f)
+        {
+            transform.Translate(Vector3.forward * 0.01f);
+        }
     }
 
     private bool CanStrikeAgain()
@@ -49,6 +67,8 @@ public class CueBallScript : MonoBehaviour
 
     private void Strike()
     {
+        if (!_gameStarted) _gameStarted = true;
+
         Vector3 directionToStrike = Mouse.GetWorldPosition() - transform.position;
         directionToStrike = directionToStrike.normalized;
         _timeOfLastStrike = Time.time;
@@ -69,10 +89,23 @@ public class CueBallScript : MonoBehaviour
     private void Freeze()
     {
         _rb.constraints = RigidbodyConstraints.FreezePosition;
+        _rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
 
     private void Unfreeze()
     {
         _rb.constraints = RigidbodyConstraints.None;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Freeze();
+        ShowCueStick();
+
+        transform.position = _respawnPoint;
+        transform.rotation = Quaternion.identity;
+
+        _wasStruck = false;
+        _gameStarted = false;
     }
 }

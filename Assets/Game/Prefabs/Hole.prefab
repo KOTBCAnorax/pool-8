@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6417576873953095718}
   - component: {fileID: 4607517959961333312}
+  - component: {fileID: 4631460745309490257}
   m_Layer: 3
   m_Name: Hole
   m_TagString: Untagged
@@ -44,3 +45,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.25
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4631460745309490257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1404517959640921933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6444de5edc04a364985fd65a1e288733, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gui: {fileID: 0}
