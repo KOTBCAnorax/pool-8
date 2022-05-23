@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class Mouse
 {
-    public static Vector3 GetWorldPosition(float mouseY = 0.2f)
+    public static Vector3 GetWorldPosition(float mouseY = 0.16f)
     {
         Camera mainCamera = Camera.main;
         Vector3 mouse3DWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
