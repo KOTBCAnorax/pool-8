@@ -49,7 +49,7 @@ public class CueBallScript : MonoBehaviour
 
     private void Strike()
     {
-        Vector3 directionToStrike = Mouse.WorldPosition() - transform.position;
+        Vector3 directionToStrike = Mouse.GetWorldPosition() - transform.position;
         directionToStrike = directionToStrike.normalized;
         _timeOfLastStrike = Time.time;
 
